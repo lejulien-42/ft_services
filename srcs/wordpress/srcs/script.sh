@@ -6,7 +6,7 @@
 #    By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 16:49:28 by lejulien          #+#    #+#              #
-#    Updated: 2021/01/07 14:38:35 by lejulien         ###   ########.fr        #
+#    Updated: 2021/01/08 14:24:57 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ rc-service nginx stop
 rc-service php-fpm7 stop
 rc-service nginx start
 rc-service php-fpm7 start
-rc-service mariadb start
+rc-service mariadb restart
 
 rc-update add mariadb default
 
