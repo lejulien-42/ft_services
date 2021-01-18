@@ -13,7 +13,9 @@
 FROM alpine
 
 RUN apk add mariadb mariadb-client openrc
+RUN openrc boot
 ADD srcs/* /
+RUN mkdir /run/mysqld/
 
 EXPOSE 3306
 

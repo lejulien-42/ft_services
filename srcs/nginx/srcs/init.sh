@@ -23,4 +23,4 @@ touch /run/openrc/softlevel
 service nginx start
 service sshd start
 
-ash
+tail -f /dev/null
