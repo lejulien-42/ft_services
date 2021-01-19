@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 
-touch /run/openrc/softlevel
 openrc boot
-/etc/init.d/mariadb setup
+touch /run/openrc/softlevel
 sed -i 's/skip-networking/# skip-networking/g' /etc/my.cnf.d/mariadb-server.cnf
-service mariadb restart
+/etc/init.d/mariadb setup
+/etc/init.d/mariadb start
 
 mysql -u root << EOF
 	CREATE DATABASE wordpress;
