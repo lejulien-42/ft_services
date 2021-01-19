@@ -11,9 +11,13 @@
 # **************************************************************************** #
 
 FROM alpine
-RUN apk add vsftpd openssl openrc curl
-ADD srcs/vsftpd.conf /etc/vsftpd
+RUN apk add vsftpd openrc
+RUN openrc boot
+ADD srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
 ADD srcs /
+RUN mkdir /srv/ftp
+RUN chown nobody:nogroup /srv/ftp
+RUN echo "anon" | tee /srv/ftp/anon.txt
 
 RUN export FTPS_USER=patate
 RUN export FTPS_PASS=123

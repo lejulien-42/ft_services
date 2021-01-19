@@ -23,5 +23,6 @@ echo -e "$FTPS_PASS\n$FTPS_PASS" | adduser -h /ftp/$FTPS_USER $FTPS_USER
 
 chown $FTPS_USER:$FTPS_USER /ftp/$FTPS_USER
 
-exec /usr/sbin/vsftpd -opasv_min_port=21000 -opasv_max_port=21004 -opasv_address=172.17.0.230 /etc/vsftpd/vsftpd.conf &
+rc-service vsftpd start
+rc-update add vsftpd
 ash
