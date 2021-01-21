@@ -11,19 +11,13 @@
 # **************************************************************************** #
 
 FROM alpine
-RUN apk add vsftpd openrc
-RUN openrc boot
-ADD srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
-ADD srcs /
-RUN mkdir /srv/ftp
-RUN chown nobody:nogroup /srv/ftp
-RUN echo "anon" | tee /srv/ftp/anon.txt
 
-RUN export FTPS_USER=patate
-RUN export FTPS_PASS=123
+RUN apk --no-cache add vsftpd
 
-EXPOSE 20 21 21000-21004
+COPY srcs/init.sh /bin/init.sh
+COPY srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
-VOLUME [ "/ftp" ]
+EXPOSE 21 21000-21010
+VOLUME /ftp/ftp
 
-CMD [ "/bin/ash", "/init.sh" ]
+CMD [ "/bin/ash", "/bin/init.sh" ]
