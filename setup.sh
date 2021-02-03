@@ -22,14 +22,8 @@ sudo pkill mysqld
 printf "$USER\n$USER" | sudo -S chmod 666 /var/run/docker.sock
 minikube start --vm-driver=docker
 
-
-minikube addons enable metrics-server
-minikube addons enable dashboard
-minikube dashboard &
-
 eval $(minikube -p minikube docker-env)
 docker build -t my_nginx ./srcs/nginx
-docker build -t my_mysql ./srcs/mysql
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml > /dev/null
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml > /dev/null
