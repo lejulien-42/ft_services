@@ -20,4 +20,7 @@ eval $(./srcs/minikube -p minikube docker-env)
 
 printf "${mag}enabling metallb...${end}\n"
 minikube addons enable metallb
+kubectl apply -f ./srcs/metallb/metallb.yaml
 
+printf "${mag}enabling nginx...${end}\n"
+docker build -t my_mysql ./srcs/nginx
