@@ -26,4 +26,4 @@ mysql -u root << EOF
 	FLUSH PRIVILEGES;
 EOF
 
-ash
+tail -f /dev/null
