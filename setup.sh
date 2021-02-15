@@ -9,7 +9,7 @@ printf '  ______     __                                                    __   
 printf ' /      \   |  \                                                  |  \                              '	;echo " "
 printf '|  ######\ _| ##_           _______   ______    ______  __     __  \##  _______   ______    _______ '	;echo " "
 printf '| ##_  \##|   ## \         /       \ /      \  /      \|  \   /  \|  \ /       \ /      \  /       \'	;echo " "
-printf '| ## \     \######        |  #######|  ######\|  ######\\##\  /  ##| ##|  #######|  ######\|  #######'	;echo " "
+printf '| ## \     \######        |  #######|  ######\|  ######\\\##\ /  ##| ##|  #######|  ######\|  #######'	;echo " "
 printf '| ####      | ## __        \##    \ | ##    ##| ##   \## \##\  ## | ##| ##      | ##    ## \##    \ '	;echo " "
 printf '| ##        | ##|  \       _\######\| ########| ##        \## ##  | ##| ##_____ | ######## _\######\'	;echo " "
 printf '| ##         \##  ##______|       ## \##     \| ##         \###   | ## \##     \ \##     \|       ##'	;echo " "
@@ -52,5 +52,6 @@ kubectl apply -f ./srcs/nginx/nginx.yaml
 
 printf "${mag}enabling mysql...${end}\n"
 docker build -t my_mysql ./srcs/mariadb
+kubectl apply -f ./srcs/mariadb/mariadb.yaml
 
 printf "${mag}build finished !!\n\n    - nginx ip : http://$ip:80\n$end"
