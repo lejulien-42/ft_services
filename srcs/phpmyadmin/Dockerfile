@@ -6,7 +6,7 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 12:33:30 by lejulien          #+#    #+#              #
-#    Updated: 2021/02/16 14:02:09 by user42           ###   ########.fr        #
+#    Updated: 2021/02/16 14:29:58 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ RUN apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl p
 ARG database_ip="mariadb-service"
 ARG database_port="3306"
 
-ADD ./srcs/phpmyadmin /var/lib/nginx/html
+ADD ./srcs/phpmyadmin /var/lib/nginx/html/phpmyadmin/
 ADD ./srcs/config.inc.php /var/lib/nginx/html/phpmyadmin/
 ADD ./srcs/www.conf /etc/php7/php-fpm.d/
 
