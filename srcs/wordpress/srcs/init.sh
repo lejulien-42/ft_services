@@ -6,11 +6,9 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 11:56:02 by lejulien          #+#    #+#              #
-#    Updated: 2021/01/15 12:00:15 by lejulien         ###   ########.fr        #
+#    Updated: 2021/02/16 11:31:52 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-echo "root:$SSH_ROOT_PASSWORD" | chpasswd
 
 service php-fpm7 restart
 
