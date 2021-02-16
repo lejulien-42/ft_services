@@ -59,4 +59,8 @@ printf "\n${gre}➥ ${mag}enabling pma...${end}\n\n"
 docker build -t my_phpmyadmin ./srcs/phpmyadmin
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
 
+printf "\n${gre}➥ ${mag}enabling wordpress...${end}\n\n"
+docker build -t my_wordpress ./srcs/wordpress
+kubectl apply -f ./srcs/wordpress/wordpress.yaml
+
 printf "\n${gre}➥ ${mag}build finished !!\n\n    ➥${mag} nginx ip : http://$ip:80\n$end\n"

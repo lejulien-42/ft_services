@@ -13,7 +13,9 @@
 /**
  * This is needed for cookie based authentication to encrypt password in
  * cookie. Needs to be 32 chars long.
+
  */
+$cfg['Servers'][$i]['ssl'];
 $cfg['blowfish_secret'] = 'Le secret c est 42'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 /**
  * Servers configuration
