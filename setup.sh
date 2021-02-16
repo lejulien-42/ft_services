@@ -63,4 +63,8 @@ printf "\n${gre}➥ ${mag}enabling wordpress...${end}\n\n"
 docker build -t my_wordpress ./srcs/wordpress
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 
-printf "\n${gre}➥ ${mag}build finished !!\n\n    ➥${mag} nginx ip : http://$ip:80\n$end\n"
+printf "\n${gre}➥ ${mag}build finished !!\n\n"
+printf "➥${mag} nginx ip : http://$ip:80\n$end\n"
+printf "➥${mag} phpmyadmin ip : http://$ip:5000\n$end\n"
+printf "➥${mag} wordpress ip : http://$ip:5050\n$end\n"
+
