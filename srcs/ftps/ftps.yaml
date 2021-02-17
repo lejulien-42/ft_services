@@ -6,20 +6,33 @@ metadata:
     metallb.universe.tf/allow-shared-ip: sharing key
 spec:
   type: LoadBalancer
-  selector:
-    app: ftps
   ports:
   - port: 21
-    targetPort: 5050
-    protocol: TCP
-    name: https
+    name: ftps
+  selector:
+    app: ftps
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ftps-pv-claim
+  labels:
+    app: ftps
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps
+  name: ftps-deployment
   labels:
     app: ftps
 spec:
@@ -32,9 +45,15 @@ spec:
         app: ftps
     spec:
       containers:
-      - name: ftps
-        image: my_ftps
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5050
-
+        - name: ftps
+          image: my_ftps
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 21
+          volumeMounts:
+            - name: ftps-persistent-storage
+              mountPath: /ftp/ftp
+      volumes:
+      - name: ftps-persistent-storage
+        persistentVolumeClaim:
+          claimName: ftps-pv-claim

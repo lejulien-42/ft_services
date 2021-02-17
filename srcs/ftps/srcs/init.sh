@@ -6,11 +6,13 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 12:47:53 by lejulien          #+#    #+#              #
-#    Updated: 2021/02/17 14:42:50 by user42           ###   ########.fr        #
+#    Updated: 2021/02/17 16:00:13 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 grep '/ftp/' /etc/passwd | cut -d':' -f1 | xargs -n1 deluser
+
+NAME="data"
 
 if [ -z "$USERS" ]; then
   USERS="ftps|toor"
@@ -35,6 +37,9 @@ for i in $USERS ; do
   chown $NAME:$NAME $FOLDER
   unset NAME PASS FOLDER UID
 done
+
+mkdir /ftp/data
+chmod 777 /ftp/data
 
 MIN_PORT=21000
 MAX_PORT=21010

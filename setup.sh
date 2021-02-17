@@ -63,6 +63,10 @@ printf "\n${gre}➥ ${mag}enabling wordpress...${end}\n\n"
 docker build -t my_wordpress ./srcs/wordpress
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 
+printf "\n${gre}➥ ${mag}enabling ftps...${end}\n\n"
+docker build -t my_ftps ./srcs/ftps
+kubectl apply -f ./srcs/ftps/ftps.yaml
+
 printf "\n${gre}➥ ${mag}build finished !!\n\n"
 printf "${gre}➥${mag} nginx ip : http://$ip:80\n$end\n"
 printf "${gre}➥${mag} phpmyadmin ip : http://$ip:5000\n$end\n"
@@ -70,4 +74,7 @@ printf "    ${gre}➥${mag} phpmyadmin user : admin\n$end\n"
 printf "${gre}➥${mag} wordpress ip : http://$ip:5050\n$end\n"
 printf "    ${gre}➥${mag} wordpress user : lejulien\n$end\n"
 printf "    ${gre}➥${mag} wordpress pass : lejulien\n$end\n"
+printf "${gre}➥${mag} ftps host : $ip:21\n$end\n"
+printf "    ${gre}➥${mag} ftps user : ftps\n$end\n"
+printf "    ${gre}➥${mag} ftps pass : toor\n$end\n"
 
