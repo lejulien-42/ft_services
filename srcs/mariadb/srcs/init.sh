@@ -6,7 +6,7 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 12:13:44 by lejulien          #+#    #+#              #
-#    Updated: 2021/02/15 22:34:54 by user42           ###   ########.fr        #
+#    Updated: 2021/02/17 11:42:01 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,5 +29,7 @@ mysql -u root << EOF
 	GRANT ALL ON *.* TO 'admin'@'%' IDENTIFIED BY '$ADMIN_PASS' WITH GRANT OPTION;
 	FLUSH PRIVILEGES;
 EOF
+
+mysql wordpress < /wordpress.sql
 
 tail -f /dev/null
