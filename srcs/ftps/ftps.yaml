@@ -7,7 +7,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
+  - port: 20
+    protocol: TCP
+    name: ftp
   - port: 21
+    protocol: TCP
     name: ftps
   selector:
     app: ftps
@@ -50,6 +54,7 @@ spec:
           imagePullPolicy: Never
           ports:
           - containerPort: 21
+          - containerPort: 20
           volumeMounts:
             - name: ftps-persistent-storage
               mountPath: /ftp/ftp
