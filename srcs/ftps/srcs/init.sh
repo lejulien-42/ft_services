@@ -6,7 +6,7 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 12:47:53 by lejulien          #+#    #+#              #
-#    Updated: 2021/01/15 12:50:37 by lejulien         ###   ########.fr        #
+#    Updated: 2021/02/17 14:42:50 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,5 @@ MAX_PORT=21010
 ADDR_POT="-opasv_address=$ADDRESS"
 
 exec /usr/sbin/vsftpd -opasv_min_port=$MIN_PORT -opasv_max_port=$MAX_PORT $ADDR_OPT /etc/vsftpd/vsftpd.conf
+service vsftpd restart
 tail -f /dev/null
