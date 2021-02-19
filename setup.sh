@@ -4,7 +4,7 @@ gre=$'\e[92m'
 mag=$'\e[1;35m'
 end=$'\e[0m'
 
-echo ${mag}
+echo #{mag}
 
 printf '  ______     __                                                    __                               '	;echo " "
 printf ' /      \   |  \                                                  |  \                              '	;echo " "
@@ -37,7 +37,9 @@ last=$(minikube ip | sed 's!.*\.!!')
 last=$((last+1))
 ip=$(minikube ip | sed "s:[^.]*$:$last:")
 line="          - $ip-$ip"
+line2="pasv_address=$ip"
 sed -i "13s/.*/$line/" ./srcs/metallb/metallb.yaml
+sed -i "109s/.*/$line2/" ./srcs/ftps/srcs/vsftpd.conf
 
 printf "\n${gre}➥ ${mag}starting eval...${end}\n\n"
 eval $(./srcs/minikube -p minikube docker-env)

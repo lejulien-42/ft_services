@@ -13,6 +13,9 @@ spec:
   - port: 21
     protocol: TCP
     name: ftps
+  - port: 8975
+    protocol: TCP
+    name: active
   selector:
     app: ftps
 
@@ -55,9 +58,7 @@ spec:
           ports:
           - containerPort: 21
           - containerPort: 20
-          volumeMounts:
-            - name: ftps-persistent-storage
-              mountPath: /ftp/ftp
+          - containerPort: 8975
       volumes:
       - name: ftps-persistent-storage
         persistentVolumeClaim:
