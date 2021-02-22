@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
       - name: mariadb
-        image: my_mysql
+        image: my_mysql:latest
         imagePullPolicy: "Never"
         ports:
         - name: https
