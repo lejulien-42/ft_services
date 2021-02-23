@@ -6,7 +6,7 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 11:39:17 by lejulien          #+#    #+#              #
-#    Updated: 2021/02/22 16:03:43 by user42           ###   ########.fr        #
+#    Updated: 2021/02/23 17:50:14 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RUN apk add openrc nginx openssl openssh
 
 ADD srcs/nginx.conf /etc/nginx/
 ADD srcs/sshd_config /etc/ssh/
-ADD srcs/index.html /www
+COPY srcs/index /www
 ADD srcs/init.sh /init.sh
 ADD srcs/proxy_params $nginx_proxy_params
 

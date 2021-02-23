@@ -32,7 +32,7 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = '_DATABASE_IP_LABEL_:_DATABASE_PORT_LABEL_';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
-$cfg['PmaAbsoluteUri'] = '/';
+$cfg['PmaAbsoluteUri'] = '/phpmyadmin';
 
 /**
  * phpMyAdmin configuration storage settings.

@@ -4,7 +4,7 @@ gre=$'\e[92m'
 mag=$'\e[1;35m'
 end=$'\e[0m'
 
-echo #{mag}
+echo ${gre}
 
 printf '  ______     __                                                    __                               '	;echo " "
 printf ' /      \   |  \                                                  |  \                              '	;echo " "
@@ -38,8 +38,13 @@ last=$((last+1))
 ip=$(minikube ip | sed "s:[^.]*$:$last:")
 line="          - $ip-$ip"
 line2="pasv_address=$ip"
+line3="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/wordpress\" role=\"button\">https://${ip}/wordpress</a></p>"
+line4="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/phpmyadmin\" role=\"button\">https://${ip}/phpmyadmin</a></p>"
+echo $line3
 sed -i "13s/.*/$line/" ./srcs/metallb/metallb.yaml
 sed -i "109s/.*/$line2/" ./srcs/ftps/srcs/vsftpd.conf
+sed -i --expression "43s@.*@$line3@" ./srcs/nginx/srcs/index/index.html
+sed -i --expression "46s@.*@$line4@" ./srcs/nginx/srcs/index/index.html
 
 printf "\n${gre}➥ ${mag}starting eval...${end}\n\n"
 eval $(./srcs/minikube -p minikube docker-env)
@@ -80,5 +85,5 @@ printf "${gre}➥${mag} ftps host : $ip:21\n$end\n"
 printf "    ${gre}➥${mag} ftps user : ftps\n$end\n"
 printf "    ${gre}➥${mag} ftps pass : toor\n$end\n"
 
-firefox -private http://$ip:80 ; minikube dashboard
+firefox -private http://$ip:80
 
