@@ -80,5 +80,5 @@ printf "${gre}➥${mag} ftps host : $ip:21\n$end\n"
 printf "    ${gre}➥${mag} ftps user : ftps\n$end\n"
 printf "    ${gre}➥${mag} ftps pass : toor\n$end\n"
 
-firefox -private http://$ip:80 && minikube dashboard
+firefox -private http://$ip:80 ; minikube dashboard
 
