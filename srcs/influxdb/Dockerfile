@@ -1,16 +1,15 @@
 FROM alpine
 
-RUN addgroup -g influxdb -S influxdb
-RUN adduser -u influxdb -h /var/lib/influxdb -D influxdb
-RUN echo 'hosts: files dns >> /etv/nsswitch.conf
-RUN apk add -Uu --purge --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community ca-certificates influxdb
-RUN update-ca-certificates
-RUN rm -fr /var/cache/apk/* /tmp/*
+RUN apk update
+RUN apk add influxdb
 
-COPY root/ /
+RUN apk add telegraf --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted --no-cache
 
-VOLUME ["/var/lib/influxdb"]
+RUN mkdir -p /etc/telegraf
+COPY ./srcs/telegraf.conf /etc/telegrfaf/telegraf.conf
 
-EXPOSE 8083 8086 8088 8091 4242
+COPY ./srcs/init.sh /init.sh
 
-ENTRYPOINT ["/init"]
+EXPOSE 8086
+
+RUN ash ./init.sh
