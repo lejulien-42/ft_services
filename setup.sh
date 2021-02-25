@@ -74,6 +74,10 @@ printf "\n${gre}➥ ${mag}enabling ftps...${end}\n\n"
 docker build -t my_ftps ./srcs/ftps
 kubectl apply -f ./srcs/ftps/ftps.yaml
 
+printf "\n${gre}➥ ${mag}enabling influxdb...${end}\n\n"
+docker build -t my_influxdb ./srcs/influxdb
+kubectl apply -f ./srcs/influxdb/influxdb.yaml
+
 printf "\n${gre}➥ ${mag}build finished !!\n\n"
 printf "${gre}➥${mag} nginx ip : http://$ip:80\n$end\n"
 printf "${gre}➥${mag} phpmyadmin ip : http://$ip:5000\n$end\n"
