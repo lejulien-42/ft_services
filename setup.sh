@@ -40,11 +40,13 @@ line="          - $ip-$ip"
 line2="pasv_address=$ip"
 line3="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/wordpress\" role=\"button\">https://${ip}/wordpress</a></p>"
 line4="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/phpmyadmin\" role=\"button\">https://${ip}/phpmyadmin</a></p>"
+line5="  urls = [\"http://${ip}:8086\"]"
 echo $line3
 sed -i "13s/.*/$line/" ./srcs/metallb/metallb.yaml
 sed -i "109s/.*/$line2/" ./srcs/ftps/srcs/vsftpd.conf
 sed -i --expression "43s@.*@$line3@" ./srcs/nginx/srcs/index/index.html
 sed -i --expression "46s@.*@$line4@" ./srcs/nginx/srcs/index/index.html
+sed -i --expression "23s@.*@$line5@" ./srcs/telegraf/srcs/telegraf.conf
 
 printf "\n${gre}➥ ${mag}starting eval...${end}\n\n"
 eval $(./srcs/minikube -p minikube docker-env)
@@ -77,6 +79,10 @@ kubectl apply -f ./srcs/ftps/ftps.yaml
 printf "\n${gre}➥ ${mag}enabling influxdb...${end}\n\n"
 docker build -t my_influxdb ./srcs/influxdb
 kubectl apply -f ./srcs/influxdb/influxdb.yaml
+
+printf "\n${gre}➥ ${mag}enabling telegraf...${end}\n\n"
+docker build -t my_telegraf ./srcs/telegraf
+kubectl apply -f ./srcs/telegraf/telegraf.yaml
 
 printf "\n${gre}➥ ${mag}build finished !!\n\n"
 printf "${gre}➥${mag} nginx ip : http://$ip:80\n$end\n"
