@@ -1,16 +1,15 @@
 apiVersion: 1
 
-Datasources:
-  - name: InfluxDB
-    type: influxdb
-    url: http://influxdb-service:8086
-    database: influxdb
-    isDefault: true
-    editable: true
-    user: lejulien
-    secureJsonData:
+datasources:
+- name: InfluxDB
+  type: influxdb
+  url: http://influxdb-service:8086
+  database: influxdb
+  user: lejulien
+  isDefault: true
+  editable: true
+  secureJsonData:
       password: lejulien
-    jsonData:
-      sslmode: "Disable"
+  jsonData:
+      sslmode: "disable"
       httpMode: GET
-

@@ -1,0 +1,67 @@
+apiVersion: 1
+
+providers:
+ - name: 'nginx'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/nginx.json
+ - name: 'mariadb'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/mariadb.json
+ - name: 'phpmyadmin'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/phpmyadmin.json
+ - name: 'wordpress'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/wordpress.json
+ - name: 'influxdb'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/influxdb.json
+ - name: 'telegraf'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/telegraf.json
+ - name: 'grafana'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/grafana.json
+ - name: 'ftps'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 60
+   options:
+     path: /usr/share/grafana/conf/provisioning/dashboards/ftps.json
