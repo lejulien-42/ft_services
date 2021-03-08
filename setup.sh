@@ -40,11 +40,13 @@ line="          - $ip-$ip"
 line2="pasv_address=$ip"
 line3="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/wordpress\" role=\"button\">https://${ip}/wordpress</a></p>"
 line4="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"https://${ip}/phpmyadmin\" role=\"button\">https://${ip}/phpmyadmin</a></p>"
+line6="<p class=\"text-center\"><a class=\"btn btn-primary btn-lg\" href=\"http://${ip}:3000\" role=\"button\">http://${ip}:3000</a></p>"
 line5="  urls = [\"http://${ip}:8086\"]"
 sed -i "13s/.*/$line/" ./srcs/metallb/metallb.yaml
 sed -i "109s/.*/$line2/" ./srcs/ftps/srcs/vsftpd.conf
 sed -i --expression "43s@.*@$line3@" ./srcs/nginx/srcs/index/index.html
 sed -i --expression "46s@.*@$line4@" ./srcs/nginx/srcs/index/index.html
+sed -i --expression "49s@.*@$line6@" ./srcs/nginx/srcs/index/index.html
 sed -i --expression "23s@.*@$line5@" ./srcs/telegraf/srcs/telegraf.conf
 
 printf "\n${gre}➥ ${mag}starting eval...${end}\n\n"
@@ -97,5 +99,8 @@ printf "    ${gre}➥${mag} wordpress pass : lejulien\n$end\n"
 printf "${gre}➥${mag} ftps host : $ip:21\n$end\n"
 printf "    ${gre}➥${mag} ftps user : ftps\n$end\n"
 printf "    ${gre}➥${mag} ftps pass : toor\n$end\n"
+printf "${gre}➥${mag} grafana ip : http://$ip:3000\n$end\n"
+printf "    ${gre}➥${mag} grafana user : lejulien\n$end\n"
+printf "    ${gre}➥${mag} grafana pass : lejulien\n$end\n"
 
 minikube dashboard
