@@ -51,11 +51,11 @@ spec:
         volumeMounts:
         - name: influxdb
           mountPath: /var/lib/influxdb
-          #livenessProbe:
-          #tcpSocket:
-          #  port: 8086
-          #initialDelaySeconds: 3
-          #periodSeconds: 3
+        livenessProbe:
+          tcpSocket:
+            port: 8086
+          initialDelaySeconds: 3
+          periodSeconds: 3
       volumes:
       - name: influxdb
         persistentVolumeClaim:
