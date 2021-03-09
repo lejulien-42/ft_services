@@ -24,7 +24,7 @@ spec:
             command:
               - /bin/sh
               - -c
-              - ps aux | grep -v grep | grep "grafana-server"
+              - ps aux | grep -v grep | grep "telegraf"
           initialDelaySeconds: 3
           periodSeconds: 3
       hostname: telegraf

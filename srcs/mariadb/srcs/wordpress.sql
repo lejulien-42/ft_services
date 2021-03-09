@@ -2,7 +2,7 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: mariadb-service:3306
+-- Host: mysql:3306
 -- Generation Time: Feb 23, 2021 at 04:08 PM
 -- Server version: 10.5.8-MariaDB
 -- PHP Version: 7.4.15

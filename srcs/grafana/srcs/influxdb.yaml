@@ -3,7 +3,7 @@ apiVersion: 1
 datasources:
 - name: InfluxDB
   type: influxdb
-  url: http://influxdb-service:8086
+  url: http://influxdb:8086
   database: influxdb
   user: lejulien
   isDefault: true

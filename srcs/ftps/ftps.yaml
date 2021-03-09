@@ -60,8 +60,13 @@ spec:
           - containerPort: 20
           - containerPort: 8975
           livenessProbe:
-            tcpSocket:
-              port: 21
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - ps aux | grep -v grep | grep "vsftpd"
+            initialDelaySeconds: 3
+            periodSeconds: 3
       volumes:
       - name: ftps-persistent-storage
         persistentVolumeClaim:

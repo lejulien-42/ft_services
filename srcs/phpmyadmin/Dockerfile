@@ -6,7 +6,7 @@
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/15 12:33:30 by lejulien          #+#    #+#              #
-#    Updated: 2021/02/16 15:33:03 by user42           ###   ########.fr        #
+#    Updated: 2021/03/09 19:40:18 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ADD srcs/default.conf /etc/nginx/conf.d/default.conf
 
 RUN apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-mbstring php7-json php7-session
 
-ARG database_ip="mariadb-service"
+ARG database_ip="mysql"
 ARG database_port="3306"
 
 ADD ./srcs/phpmyadmin /var/lib/nginx/html/phpmyadmin/

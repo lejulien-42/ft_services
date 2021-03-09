@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    app: mariadb
-  name: mariadb-volume
+    app: mysql
+  name: mysql-volume
 spec:
   accessModes:
   - ReadWriteOnce
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb-service
+  name: mysql
   annotations: 
     metallb.universe.tf/allow-shared-ip : nginx
 spec:
@@ -26,7 +26,7 @@ spec:
     targetPort: 3306
     protocol: TCP
   selector:
-    app: mariadb
+    app: mysql
   type: ClusterIP
 
 ---
@@ -34,25 +34,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mariadb-deploy
+  name: mysql
 spec:
   selector:
     matchLabels:
-      app: mariadb
+      app: mysql
   template:
     metadata:
       labels:
-        app: mariadb
+        app: mysql
     spec:
       containers:
-      - name: mariadb
+      - name: mysql
         image: my_mysql:latest
         imagePullPolicy: "Never"
         ports:
         - name: https
           containerPort: 3306
         volumeMounts:
-        - name: mariadb-persistent-storage
+        - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
         livenessProbe:
           exec:
@@ -63,7 +63,7 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 3
       volumes:
-      - name: mariadb-persistent-storage
+      - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mariadb-volume
-      hostname: mariadb
+          claimName: mysql-volume
+      hostname: mysql
