@@ -42,11 +42,11 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
-      livenessProbe:
-        httpGet:
-          path: /nginx-status
-          port: 443
-          scheme: HTTPS
-        initialDelaySeconds: 3
-        periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /nginx-status
+            port: 443
+            scheme: HTTPS
+          initialDelaySeconds: 3
+          periodSeconds: 3
 

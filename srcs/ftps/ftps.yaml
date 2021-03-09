@@ -59,9 +59,9 @@ spec:
           - containerPort: 21
           - containerPort: 20
           - containerPort: 8975
-      livenessProbe:
-        tcpSocket:
-          port: 21
+          livenessProbe:
+            tcpSocket:
+              port: 21
       volumes:
       - name: ftps-persistent-storage
         persistentVolumeClaim:
