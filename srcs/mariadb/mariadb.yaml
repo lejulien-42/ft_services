@@ -54,6 +54,14 @@ spec:
         volumeMounts:
         - name: mariadb-persistent-storage
           mountPath: /var/lib/mysql
+      livenessProbe:
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - echo 'SHOW DATABASES;' | mysql | grep wordpress
+          initialDelaySeconds: 30
+          periodSeconds: 3
       volumes:
       - name: mariadb-persistent-storage
         persistentVolumeClaim:
