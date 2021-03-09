@@ -44,7 +44,7 @@ spec:
         - containerPort: 443
         livenessProbe:
           httpGet:
-            path: /nginx-status
+            path: /
             port: 443
             scheme: HTTPS
           initialDelaySeconds: 3
